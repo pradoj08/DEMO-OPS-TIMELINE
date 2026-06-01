@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8" />
 <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-<title>Settegast Daily Operations Timeline</title>
+<title>Demo Terminal Daily Operations Timeline</title>
 <style>
 :root{--textScale:1;--red:#aa0d12;--red2:#c41f27;--green:#168743;--orange:#f28c18;--ink:#111;--muted:#666;--line:#ddd;--bg:#f4f5f6;--panel:#fff;--softRed:#fff3f3;--shadow:0 8px 22px rgba(0,0,0,.10)}
 body.theme-dark{--red:#f28c18;--red2:#ff9f2e;--ink:#f5f7fb;--muted:#b8c0cc;--line:#394150;--bg:#0f1720;--panel:#161f2a;--softRed:#2b1c0f;--shadow:0 10px 28px rgba(0,0,0,.42);background:linear-gradient(180deg,#0c1118,#151d27);color:var(--ink)}
@@ -953,6 +953,42 @@ body.theme-dark .time-card.live{
     0 22px 52px rgba(0,0,0,.68)!important;
 }
 
+
+/* Demo mode branding */
+.demo-badge{
+  display:inline-flex;
+  align-items:center;
+  justify-content:center;
+  padding:6px 10px;
+  border-radius:999px;
+  background:linear-gradient(135deg,#fef3c7,#fde68a);
+  color:#7c2d12;
+  border:1px solid #f59e0b;
+  font-size:12px;
+  font-weight:950;
+  letter-spacing:.08em;
+  box-shadow:0 3px 10px rgba(146,64,14,.14);
+}
+body.theme-dark .demo-badge{
+  background:linear-gradient(135deg,#3b2f16,#4a3510);
+  color:#fde68a;
+  border-color:#a16207;
+}
+body:before{
+  content:"DEMO MODE";
+  position:fixed;
+  right:18px;
+  bottom:14px;
+  z-index:5;
+  pointer-events:none;
+  font-size:11px;
+  font-weight:950;
+  letter-spacing:.12em;
+  color:rgba(100,116,139,.32);
+}
+body.theme-dark:before{
+  color:rgba(226,232,240,.18);
+}
 
 /* Same family as Morning Meeting{
   background:linear-gradient(180deg,#dcecf5,#cbe1ee)!important;
@@ -1925,100 +1961,6 @@ body.theme-dark .archive-chip.pending{background:#172033;color:#cbd5e1;border-co
   content:"";
 }
 
-
-/* Hide empty note-board helper text after removing instructions */
-#fieldPanel .priority-board-sub:empty,
-#afternoonPanel .priority-board-sub:empty,
-#urgentPanel .priority-board-sub:empty{
-  display:none!important;
-}
-
-
-/* Hide empty popup-notes footer/legend helper text */
-#fieldPanel .priority-legend:empty,
-#afternoonPanel .priority-legend:empty,
-#urgentPanel .priority-legend:empty{
-  display:none!important;
-}
-
-
-/* Export clone fix: avoid native input baseline shift in html2canvas */
-.notes-export-clone{
-  position:fixed!important;
-  left:-10000px!important;
-  top:0!important;
-  width:max-content!important;
-  max-width:none!important;
-  z-index:-1!important;
-  pointer-events:none!important;
-}
-.notes-export-clone .priority-line-input-export{
-  height:100%!important;
-  width:100%!important;
-  min-height:0!important;
-  padding:0 11px!important;
-  margin:0!important;
-  border:0!important;
-  border-radius:0!important;
-  background:transparent!important;
-  box-shadow:none!important;
-  outline:none!important;
-  display:flex!important;
-  align-items:center!important;
-  line-height:1.2!important;
-  font:inherit!important;
-  font-weight:900!important;
-  white-space:pre-wrap!important;
-  overflow:hidden!important;
-  color:inherit!important;
-  -webkit-text-fill-color:currentColor!important;
-}
-
-
-/* Remove popup-note helper/legend rows globally */
-#fieldPanel .priority-board-sub:empty,
-#afternoonPanel .priority-board-sub:empty,
-#urgentPanel .priority-board-sub:empty,
-#fieldPanel .priority-legend:empty,
-#afternoonPanel .priority-legend:empty,
-#urgentPanel .priority-legend:empty{
-  display:none!important;
-}
-
-/* Export clone cleanup: don't include helper/status/action/footer text in screenshots */
-.notes-export-clone .priority-board-sub,
-.notes-export-clone .priority-status,
-.notes-export-clone .priority-actions,
-.notes-export-clone .priority-legend{
-  display:none!important;
-}
-
-/* Export clone text alignment fix */
-.notes-export-clone .priority-line{
-  height:40px!important;
-  min-height:40px!important;
-  display:grid!important;
-  grid-template-columns:34px minmax(0,1fr)!important;
-  align-items:stretch!important;
-}
-.notes-export-clone .priority-line-num{
-  display:flex!important;
-  align-items:center!important;
-  justify-content:center!important;
-  height:100%!important;
-  line-height:1!important;
-}
-.notes-export-clone .priority-line-input-export{
-  display:flex!important;
-  align-items:center!important;
-  height:100%!important;
-  min-height:0!important;
-  padding:0 11px!important;
-  margin:0!important;
-  line-height:1.1!important;
-  transform:none!important;
-}
-
 </style>
 <script src="https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js"></script>
 </head>
@@ -2039,7 +1981,7 @@ body.theme-dark .archive-chip.pending{background:#172033;color:#cbd5e1;border-co
 </div>
 
 <main class="app" id="app">
-<header class="topbar"><div class="brand"><div class="railmark" aria-hidden="true"><svg viewBox="0 0 64 52" role="img"><path class="railbed" d="M19 5h26l13 42H6L19 5Z"/><path class="rail" d="M23 6 10 47"/><path class="rail" d="M41 6 54 47"/><rect class="tiebar" x="23" y="7" width="18" height="4" rx="2"/><rect class="tiebar" x="20" y="16" width="24" height="4" rx="2"/><rect class="tiebar" x="17" y="26" width="30" height="4" rx="2"/><rect class="tiebar" x="13" y="37" width="38" height="5" rx="2.5"/><path d="M32 8v34" stroke="rgba(255,255,255,.38)" stroke-width="2" stroke-linecap="round"/></svg></div><h1>SETTEGAST <span>— DAILY OPERATIONS TIMELINE</span></h1></div><div class="top-actions"><div class="top-control-stack"><div class="top-split-control"><button class="btn light top-theme-btn" id="themeBtn">Dark Version</button><button class="btn light top-toolbar-btn" id="toolbarToggleBtn">Hide Toolbar</button></div><label class="text-control top-text-control">Text Size <input type="range" id="textScale" min="85" max="130" step="5" value="100"><span id="textScaleValue">100%</span></label></div><div class="datebox"><div class="label">TODAY</div><div class="date" id="todayText"></div></div></div></header>
+<header class="topbar"><div class="brand"><div class="railmark" aria-hidden="true"><svg viewBox="0 0 64 52" role="img"><path class="railbed" d="M19 5h26l13 42H6L19 5Z"/><path class="rail" d="M23 6 10 47"/><path class="rail" d="M41 6 54 47"/><rect class="tiebar" x="23" y="7" width="18" height="4" rx="2"/><rect class="tiebar" x="20" y="16" width="24" height="4" rx="2"/><rect class="tiebar" x="17" y="26" width="30" height="4" rx="2"/><rect class="tiebar" x="13" y="37" width="38" height="5" rx="2.5"/><path d="M32 8v34" stroke="rgba(255,255,255,.38)" stroke-width="2" stroke-linecap="round"/></svg></div><h1>DEMO TERMINAL <span>— DAILY OPERATIONS TIMELINE</span></h1><span class="demo-badge">DEMO MODE</span></div><div class="top-actions"><div class="top-control-stack"><div class="top-split-control"><button class="btn light top-theme-btn" id="themeBtn">Dark Version</button><button class="btn light top-toolbar-btn" id="toolbarToggleBtn">Hide Toolbar</button></div><label class="text-control top-text-control">Text Size <input type="range" id="textScale" min="85" max="130" step="5" value="100"><span id="textScaleValue">100%</span></label></div><div class="datebox"><div class="label">TODAY</div><div class="date" id="todayText"></div></div></div></header>
 <div class="toolbar"><div class="tool-left"><button class="btn nav-tone split-tone" id="splitBtn">Split Page</button><button class="btn nav-tone task-tone" id="defaultsBtn">Task Manager</button><button class="btn nav-tone archive-tone" id="archiveBtn">Archive</button><button class="btn nav-tone conference-tone" id="confToggleBtn">Conference</button><div class="notes-menu-wrap">
   <button class="btn nav-tone urgent-tone" id="notesMenuBtn" type="button">Urgent Notes ▾</button>
   <div class="notes-menu" id="notesMenu">
@@ -2052,8 +1994,8 @@ body.theme-dark .archive-chip.pending{background:#172033;color:#cbd5e1;border-co
 <section class="board"><div class="main-col"><div class="timeline-wrap"><div id="timeline"></div></div></div><div class="notes-col"><div id="notesTimeline"></div></div></section>
 </main>
 
-<div class="panel" id="fieldPanel"><div class="modal"><div class="modal-head"><h2>Morning Meeting</h2><div style="display:flex;gap:8px;align-items:center"><button class="btn small light field-export-btn" id="exportFieldNotesBtn">Export</button><button class="btn small light closePanel">Close</button></div></div><div class="modal-body"><div class="urgent-panel-card"><div class="priority-board-top"><div><div class="priority-board-title">Morning Meeting Board</div><div class="priority-board-sub"></div></div><div class="priority-status" id="fieldSaveStatus">Autosaved locally</div></div><div class="priority-matrix"><section class="priority-card" data-priority="crises"><div class="priority-head"><div class="priority-title">Landing Plan</div><div class="priority-range">Inbound placement / track plan / ramp setup</div></div><div class="priority-body"><div class="priority-lines" data-field-key="landing"><label class="priority-line"><span class="priority-line-num">1</span><input class="priority-line-input field-line-input" data-field-key="landing" data-line="0" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">2</span><input class="priority-line-input field-line-input" data-field-key="landing" data-line="1" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">3</span><input class="priority-line-input field-line-input" data-field-key="landing" data-line="2" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">4</span><input class="priority-line-input field-line-input" data-field-key="landing" data-line="3" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">5</span><input class="priority-line-input field-line-input" data-field-key="landing" data-line="4" autocomplete="off"></label></div></div></section><section class="priority-card" data-priority="urgent"><div class="priority-head"><div class="priority-title">Switch Crew</div><div class="priority-range">Switching needs / holds / crew updates</div></div><div class="priority-body"><div class="priority-lines" data-field-key="switchCrew"><label class="priority-line"><span class="priority-line-num">1</span><input class="priority-line-input field-line-input" data-field-key="switchCrew" data-line="0" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">2</span><input class="priority-line-input field-line-input" data-field-key="switchCrew" data-line="1" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">3</span><input class="priority-line-input field-line-input" data-field-key="switchCrew" data-line="2" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">4</span><input class="priority-line-input field-line-input" data-field-key="switchCrew" data-line="3" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">5</span><input class="priority-line-input field-line-input" data-field-key="switchCrew" data-line="4" autocomplete="off"></label></div></div></section><section class="priority-card" data-priority="norush"><div class="priority-head"><div class="priority-title">Loading Plan</div><div class="priority-range">Loadout priorities / shortages / workload</div></div><div class="priority-body"><div class="priority-lines" data-field-key="loading"><label class="priority-line"><span class="priority-line-num">1</span><input class="priority-line-input field-line-input" data-field-key="loading" data-line="0" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">2</span><input class="priority-line-input field-line-input" data-field-key="loading" data-line="1" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">3</span><input class="priority-line-input field-line-input" data-field-key="loading" data-line="2" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">4</span><input class="priority-line-input field-line-input" data-field-key="loading" data-line="3" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">5</span><input class="priority-line-input field-line-input" data-field-key="loading" data-line="4" autocomplete="off"></label></div></div></section><section class="priority-card" data-priority="endweek"><div class="priority-head"><div class="priority-title">Other Notes</div><div class="priority-range">Anything that does not fit the main field buckets</div></div><div class="priority-body"><div class="priority-lines" data-field-key="other"><label class="priority-line"><span class="priority-line-num">1</span><input class="priority-line-input field-line-input" data-field-key="other" data-line="0" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">2</span><input class="priority-line-input field-line-input" data-field-key="other" data-line="1" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">3</span><input class="priority-line-input field-line-input" data-field-key="other" data-line="2" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">4</span><input class="priority-line-input field-line-input" data-field-key="other" data-line="3" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">5</span><input class="priority-line-input field-line-input" data-field-key="other" data-line="4" autocomplete="off"></label></div></div></section></div><div class="priority-actions"><div class="priority-legend"></div><div><button class="btn small light" id="saveFieldNotesBtn">Save Board</button> <button class="btn small red" id="clearFieldNotesBtn">Clear Board</button></div></div></div></div></div></div>
-<div class="panel" id="afternoonPanel"><div class="modal"><div class="modal-head"><h2>Afternoon Meeting</h2><div style="display:flex;gap:8px;align-items:center"><button class="btn small light field-export-btn" id="exportAfternoonNotesBtn">Export</button><button class="btn small light closePanel">Close</button></div></div><div class="modal-body"><div class="urgent-panel-card"><div class="priority-board-top"><div><div class="priority-board-title">Afternoon Meeting Board</div><div class="priority-board-sub"></div></div><div class="priority-status" id="afternoonSaveStatus">Autosaved locally</div></div><div class="priority-matrix"><section class="priority-card" data-priority="crises"><div class="priority-head"><div class="priority-title">Landing Plan</div><div class="priority-range">Inbound placement / track plan / ramp setup</div></div><div class="priority-body"><div class="priority-lines" data-afternoon-key="landing"><label class="priority-line"><span class="priority-line-num">1</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="landing" data-line="0" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">2</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="landing" data-line="1" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">3</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="landing" data-line="2" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">4</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="landing" data-line="3" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">5</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="landing" data-line="4" autocomplete="off"></label></div></div></section><section class="priority-card" data-priority="urgent"><div class="priority-head"><div class="priority-title">Switch Crew</div><div class="priority-range">Switching needs / holds / crew updates</div></div><div class="priority-body"><div class="priority-lines" data-afternoon-key="switchCrew"><label class="priority-line"><span class="priority-line-num">1</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="switchCrew" data-line="0" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">2</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="switchCrew" data-line="1" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">3</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="switchCrew" data-line="2" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">4</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="switchCrew" data-line="3" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">5</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="switchCrew" data-line="4" autocomplete="off"></label></div></div></section><section class="priority-card" data-priority="norush"><div class="priority-head"><div class="priority-title">Loading Plan</div><div class="priority-range">Loadout priorities / shortages / workload</div></div><div class="priority-body"><div class="priority-lines" data-afternoon-key="loading"><label class="priority-line"><span class="priority-line-num">1</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="loading" data-line="0" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">2</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="loading" data-line="1" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">3</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="loading" data-line="2" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">4</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="loading" data-line="3" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">5</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="loading" data-line="4" autocomplete="off"></label></div></div></section><section class="priority-card" data-priority="endweek"><div class="priority-head"><div class="priority-title">Other Notes</div><div class="priority-range">Anything that does not fit the main field buckets</div></div><div class="priority-body"><div class="priority-lines" data-afternoon-key="other"><label class="priority-line"><span class="priority-line-num">1</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="other" data-line="0" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">2</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="other" data-line="1" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">3</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="other" data-line="2" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">4</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="other" data-line="3" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">5</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="other" data-line="4" autocomplete="off"></label></div></div></section></div><div class="priority-actions"><div class="priority-legend"></div><div><button class="btn small light" id="saveAfternoonNotesBtn">Save Board</button> <button class="btn small red" id="clearAfternoonNotesBtn">Clear Board</button></div></div></div></div></div></div>
+<div class="panel" id="fieldPanel"><div class="modal"><div class="modal-head"><h2>Morning Meeting</h2><div style="display:flex;gap:8px;align-items:center"><button class="btn small light field-export-btn" id="exportFieldNotesBtn">Export</button><button class="btn small light closePanel">Close</button></div></div><div class="modal-body"><div class="urgent-panel-card"><div class="priority-board-top"><div><div class="priority-board-title">Morning Meeting Board</div><div class="priority-board-sub">Five editable notebook lines for morning meeting notes. Click any line, type the note, and it autosaves.</div></div><div class="priority-status" id="fieldSaveStatus">Autosaved locally</div></div><div class="priority-matrix"><section class="priority-card" data-priority="crises"><div class="priority-head"><div class="priority-title">Landing Plan</div><div class="priority-range">Inbound placement / track plan / ramp setup</div></div><div class="priority-body"><div class="priority-lines" data-field-key="landing"><label class="priority-line"><span class="priority-line-num">1</span><input class="priority-line-input field-line-input" data-field-key="landing" data-line="0" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">2</span><input class="priority-line-input field-line-input" data-field-key="landing" data-line="1" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">3</span><input class="priority-line-input field-line-input" data-field-key="landing" data-line="2" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">4</span><input class="priority-line-input field-line-input" data-field-key="landing" data-line="3" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">5</span><input class="priority-line-input field-line-input" data-field-key="landing" data-line="4" autocomplete="off"></label></div></div></section><section class="priority-card" data-priority="urgent"><div class="priority-head"><div class="priority-title">Switch Crew</div><div class="priority-range">Switching needs / holds / crew updates</div></div><div class="priority-body"><div class="priority-lines" data-field-key="switchCrew"><label class="priority-line"><span class="priority-line-num">1</span><input class="priority-line-input field-line-input" data-field-key="switchCrew" data-line="0" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">2</span><input class="priority-line-input field-line-input" data-field-key="switchCrew" data-line="1" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">3</span><input class="priority-line-input field-line-input" data-field-key="switchCrew" data-line="2" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">4</span><input class="priority-line-input field-line-input" data-field-key="switchCrew" data-line="3" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">5</span><input class="priority-line-input field-line-input" data-field-key="switchCrew" data-line="4" autocomplete="off"></label></div></div></section><section class="priority-card" data-priority="norush"><div class="priority-head"><div class="priority-title">Loading Plan</div><div class="priority-range">Loadout priorities / shortages / workload</div></div><div class="priority-body"><div class="priority-lines" data-field-key="loading"><label class="priority-line"><span class="priority-line-num">1</span><input class="priority-line-input field-line-input" data-field-key="loading" data-line="0" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">2</span><input class="priority-line-input field-line-input" data-field-key="loading" data-line="1" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">3</span><input class="priority-line-input field-line-input" data-field-key="loading" data-line="2" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">4</span><input class="priority-line-input field-line-input" data-field-key="loading" data-line="3" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">5</span><input class="priority-line-input field-line-input" data-field-key="loading" data-line="4" autocomplete="off"></label></div></div></section><section class="priority-card" data-priority="endweek"><div class="priority-head"><div class="priority-title">Other Notes</div><div class="priority-range">Anything that does not fit the main field buckets</div></div><div class="priority-body"><div class="priority-lines" data-field-key="other"><label class="priority-line"><span class="priority-line-num">1</span><input class="priority-line-input field-line-input" data-field-key="other" data-line="0" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">2</span><input class="priority-line-input field-line-input" data-field-key="other" data-line="1" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">3</span><input class="priority-line-input field-line-input" data-field-key="other" data-line="2" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">4</span><input class="priority-line-input field-line-input" data-field-key="other" data-line="3" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">5</span><input class="priority-line-input field-line-input" data-field-key="other" data-line="4" autocomplete="off"></label></div></div></section></div><div class="priority-actions"><div class="priority-legend">Blank 5-line morning meeting board. Each line is separately clickable and editable.</div><div><button class="btn small light" id="saveFieldNotesBtn">Save Board</button> <button class="btn small red" id="clearFieldNotesBtn">Clear Board</button></div></div></div></div></div></div>
+<div class="panel" id="afternoonPanel"><div class="modal"><div class="modal-head"><h2>Afternoon Meeting</h2><div style="display:flex;gap:8px;align-items:center"><button class="btn small light field-export-btn" id="exportAfternoonNotesBtn">Export</button><button class="btn small light closePanel">Close</button></div></div><div class="modal-body"><div class="urgent-panel-card"><div class="priority-board-top"><div><div class="priority-board-title">Afternoon Meeting Board</div><div class="priority-board-sub">Five editable notebook lines for afternoon meeting notes. Click any line, type the note, and it autosaves.</div></div><div class="priority-status" id="afternoonSaveStatus">Autosaved locally</div></div><div class="priority-matrix"><section class="priority-card" data-priority="crises"><div class="priority-head"><div class="priority-title">Landing Plan</div><div class="priority-range">Inbound placement / track plan / ramp setup</div></div><div class="priority-body"><div class="priority-lines" data-afternoon-key="landing"><label class="priority-line"><span class="priority-line-num">1</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="landing" data-line="0" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">2</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="landing" data-line="1" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">3</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="landing" data-line="2" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">4</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="landing" data-line="3" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">5</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="landing" data-line="4" autocomplete="off"></label></div></div></section><section class="priority-card" data-priority="urgent"><div class="priority-head"><div class="priority-title">Switch Crew</div><div class="priority-range">Switching needs / holds / crew updates</div></div><div class="priority-body"><div class="priority-lines" data-afternoon-key="switchCrew"><label class="priority-line"><span class="priority-line-num">1</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="switchCrew" data-line="0" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">2</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="switchCrew" data-line="1" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">3</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="switchCrew" data-line="2" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">4</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="switchCrew" data-line="3" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">5</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="switchCrew" data-line="4" autocomplete="off"></label></div></div></section><section class="priority-card" data-priority="norush"><div class="priority-head"><div class="priority-title">Loading Plan</div><div class="priority-range">Loadout priorities / shortages / workload</div></div><div class="priority-body"><div class="priority-lines" data-afternoon-key="loading"><label class="priority-line"><span class="priority-line-num">1</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="loading" data-line="0" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">2</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="loading" data-line="1" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">3</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="loading" data-line="2" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">4</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="loading" data-line="3" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">5</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="loading" data-line="4" autocomplete="off"></label></div></div></section><section class="priority-card" data-priority="endweek"><div class="priority-head"><div class="priority-title">Other Notes</div><div class="priority-range">Anything that does not fit the main field buckets</div></div><div class="priority-body"><div class="priority-lines" data-afternoon-key="other"><label class="priority-line"><span class="priority-line-num">1</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="other" data-line="0" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">2</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="other" data-line="1" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">3</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="other" data-line="2" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">4</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="other" data-line="3" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">5</span><input class="priority-line-input afternoon-line-input" data-afternoon-key="other" data-line="4" autocomplete="off"></label></div></div></section></div><div class="priority-actions"><div class="priority-legend">Blank 5-line afternoon meeting board. Each line is separately clickable and editable.</div><div><button class="btn small light" id="saveAfternoonNotesBtn">Save Board</button> <button class="btn small red" id="clearAfternoonNotesBtn">Clear Board</button></div></div></div></div></div></div>
 <div class="panel" id="archivePanel"><div class="modal"><div class="modal-head"><h2>Archive</h2><button class="btn small light closePanel">Close</button></div><div class="modal-body"><div class="modal-row"><input id="archiveName" placeholder="Archive name"><button class="btn red" id="saveArchiveBtn">Save Current</button></div><div class="archive-list" id="archiveList"></div></div></div></div>
 <div class="panel" id="defaultsPanel"><div class="modal"><div class="modal-head"><h2>Task Manager</h2><div style="display:flex;gap:8px;align-items:center"><button class="btn small red" id="addTimelineFromManagerBtn">Add Timeline</button><button class="btn small light" id="statusRecordBtn">Status Record</button><button class="btn small light closePanel">Close</button></div></div><div class="modal-body">
 <div class="task-manager-add-timeline" id="inlineTimelineMenu">
@@ -2082,10 +2024,10 @@ body.theme-dark .archive-chip.pending{background:#172033;color:#cbd5e1;border-co
 <div class="modal-row"><select id="defaultBlockSelect"></select><input id="defaultTaskText" placeholder="New default task"><button class="btn red" id="addDefaultTaskBtn">Add Default Task</button></div><div class="default-list" id="defaultList"></div></div></div></div>
 <div class="panel" id="statusRecordPanel"><div class="modal"><div class="modal-head"><h2>Task Status Record</h2><button class="btn small light closePanel">Close</button></div><div class="modal-body"><div id="statusRecordBody"></div></div></div></div>
 <div class="panel" id="callsPanel"><div class="modal"><div class="modal-head"><h2>Conference Call Bank</h2><button class="btn small light closePanel">Close</button></div><div class="modal-body"><div class="modal-row"><input id="callName" placeholder="Conference call name"><input id="callStart" type="time"><input id="callEnd" type="time"><button class="btn red" id="addCallBtn">Add</button></div><div class="call-list" id="callList"></div></div></div></div>
-<div class="panel" id="urgentPanel"><div class="modal"><div class="modal-head"><h2>Urgent Notes</h2><button class="btn small light closePanel">Close</button></div><div class="modal-body"><div class="urgent-panel-card"><div class="priority-board-top"><div><div class="priority-board-title">Priority Matrix</div><div class="priority-board-sub"></div></div><div class="priority-status" id="urgentSaveStatus">Autosaved locally</div></div><div class="priority-matrix"><section class="priority-card" data-priority="crises"><div class="priority-head"><div class="priority-title">Crises and Fires &lt; 1 HR</div><div class="priority-range">Immediate action / escalate now</div></div><div class="priority-body"><div class="priority-lines" data-urgent-key="crises"><label class="priority-line"><span class="priority-line-num">1</span><input class="priority-line-input" data-urgent-key="crises" data-line="0" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">2</span><input class="priority-line-input" data-urgent-key="crises" data-line="1" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">3</span><input class="priority-line-input" data-urgent-key="crises" data-line="2" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">4</span><input class="priority-line-input" data-urgent-key="crises" data-line="3" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">5</span><input class="priority-line-input" data-urgent-key="crises" data-line="4" autocomplete="off"></label></div></div></section><section class="priority-card" data-priority="urgent"><div class="priority-head"><div class="priority-title">Urgent &lt; 2-3 HR</div><div class="priority-range">Needs attention this shift</div></div><div class="priority-body"><div class="priority-lines" data-urgent-key="urgent"><label class="priority-line"><span class="priority-line-num">1</span><input class="priority-line-input" data-urgent-key="urgent" data-line="0" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">2</span><input class="priority-line-input" data-urgent-key="urgent" data-line="1" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">3</span><input class="priority-line-input" data-urgent-key="urgent" data-line="2" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">4</span><input class="priority-line-input" data-urgent-key="urgent" data-line="3" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">5</span><input class="priority-line-input" data-urgent-key="urgent" data-line="4" autocomplete="off"></label></div></div></section><section class="priority-card" data-priority="norush"><div class="priority-head"><div class="priority-title">No Rush 4-6 HR / End of Day 6-12 HR</div><div class="priority-range">Handle later today / before shift end</div></div><div class="priority-body"><div class="priority-lines" data-urgent-key="norush"><label class="priority-line"><span class="priority-line-num">1</span><input class="priority-line-input" data-urgent-key="norush" data-line="0" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">2</span><input class="priority-line-input" data-urgent-key="norush" data-line="1" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">3</span><input class="priority-line-input" data-urgent-key="norush" data-line="2" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">4</span><input class="priority-line-input" data-urgent-key="norush" data-line="3" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">5</span><input class="priority-line-input" data-urgent-key="norush" data-line="4" autocomplete="off"></label></div></div></section><section class="priority-card" data-priority="endweek"><div class="priority-head"><div class="priority-title">End of the Week 24 HR+</div><div class="priority-range">Backlog / planning / nonurgent work</div></div><div class="priority-body"><div class="priority-lines" data-urgent-key="endweek"><label class="priority-line"><span class="priority-line-num">1</span><input class="priority-line-input" data-urgent-key="endweek" data-line="0" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">2</span><input class="priority-line-input" data-urgent-key="endweek" data-line="1" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">3</span><input class="priority-line-input" data-urgent-key="endweek" data-line="2" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">4</span><input class="priority-line-input" data-urgent-key="endweek" data-line="3" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">5</span><input class="priority-line-input" data-urgent-key="endweek" data-line="4" autocomplete="off"></label></div></div></section></div><div class="priority-actions"><div class="priority-legend"></div><div><button class="btn small light" id="saveUrgentNotesBtn">Save Board</button> <button class="btn small red" id="clearUrgentNotesBtn">Clear Board</button></div></div></div></div></div></div>
+<div class="panel" id="urgentPanel"><div class="modal"><div class="modal-head"><h2>Urgent Notes</h2><button class="btn small light closePanel">Close</button></div><div class="modal-body"><div class="urgent-panel-card"><div class="priority-board-top"><div><div class="priority-board-title">Priority Matrix</div><div class="priority-board-sub">Five editable lines per quadrant. Click any line, type the note, and it autosaves.</div></div><div class="priority-status" id="urgentSaveStatus">Autosaved locally</div></div><div class="priority-matrix"><section class="priority-card" data-priority="crises"><div class="priority-head"><div class="priority-title">Crises and Fires &lt; 1 HR</div><div class="priority-range">Immediate action / escalate now</div></div><div class="priority-body"><div class="priority-lines" data-urgent-key="crises"><label class="priority-line"><span class="priority-line-num">1</span><input class="priority-line-input" data-urgent-key="crises" data-line="0" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">2</span><input class="priority-line-input" data-urgent-key="crises" data-line="1" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">3</span><input class="priority-line-input" data-urgent-key="crises" data-line="2" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">4</span><input class="priority-line-input" data-urgent-key="crises" data-line="3" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">5</span><input class="priority-line-input" data-urgent-key="crises" data-line="4" autocomplete="off"></label></div></div></section><section class="priority-card" data-priority="urgent"><div class="priority-head"><div class="priority-title">Urgent &lt; 2-3 HR</div><div class="priority-range">Needs attention this shift</div></div><div class="priority-body"><div class="priority-lines" data-urgent-key="urgent"><label class="priority-line"><span class="priority-line-num">1</span><input class="priority-line-input" data-urgent-key="urgent" data-line="0" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">2</span><input class="priority-line-input" data-urgent-key="urgent" data-line="1" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">3</span><input class="priority-line-input" data-urgent-key="urgent" data-line="2" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">4</span><input class="priority-line-input" data-urgent-key="urgent" data-line="3" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">5</span><input class="priority-line-input" data-urgent-key="urgent" data-line="4" autocomplete="off"></label></div></div></section><section class="priority-card" data-priority="norush"><div class="priority-head"><div class="priority-title">No Rush 4-6 HR / End of Day 6-12 HR</div><div class="priority-range">Handle later today / before shift end</div></div><div class="priority-body"><div class="priority-lines" data-urgent-key="norush"><label class="priority-line"><span class="priority-line-num">1</span><input class="priority-line-input" data-urgent-key="norush" data-line="0" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">2</span><input class="priority-line-input" data-urgent-key="norush" data-line="1" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">3</span><input class="priority-line-input" data-urgent-key="norush" data-line="2" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">4</span><input class="priority-line-input" data-urgent-key="norush" data-line="3" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">5</span><input class="priority-line-input" data-urgent-key="norush" data-line="4" autocomplete="off"></label></div></div></section><section class="priority-card" data-priority="endweek"><div class="priority-head"><div class="priority-title">End of the Week 24 HR+</div><div class="priority-range">Backlog / planning / nonurgent work</div></div><div class="priority-body"><div class="priority-lines" data-urgent-key="endweek"><label class="priority-line"><span class="priority-line-num">1</span><input class="priority-line-input" data-urgent-key="endweek" data-line="0" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">2</span><input class="priority-line-input" data-urgent-key="endweek" data-line="1" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">3</span><input class="priority-line-input" data-urgent-key="endweek" data-line="2" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">4</span><input class="priority-line-input" data-urgent-key="endweek" data-line="3" autocomplete="off"></label><label class="priority-line"><span class="priority-line-num">5</span><input class="priority-line-input" data-urgent-key="endweek" data-line="4" autocomplete="off"></label></div></div></section></div><div class="priority-actions"><div class="priority-legend">Blank 5-line board. Each line is separately clickable and editable.</div><div><button class="btn small light" id="saveUrgentNotesBtn">Save Board</button> <button class="btn small red" id="clearUrgentNotesBtn">Clear Board</button></div></div></div></div></div></div>
 <script>
 const seedBlocks=[
-{time:'400-500 AM',tasks:['0-72 HR INBOUND BREAKDOWN / POST DAILY PLAN IN TEAMS','CHASSIS FORECAST / SHORTAGES / APPROVE SWINGS','AM DAILY SETTEGAST REPORT [630AM]','INPUT TIME FOR PREVIOUS DAY / REQUEST / HEADCOUNT']},
+{time:'400-500 AM',tasks:['0-72 HR INBOUND BREAKDOWN / POST DAILY PLAN IN TEAMS','CHASSIS FORECAST / SHORTAGES / APPROVE SWINGS','AM DAILY TERMINAL REPORT [630AM]','INPUT TIME FOR PREVIOUS DAY / REQUEST / HEADCOUNT']},
 {time:'500-600 AM',tasks:['SAFETY INBOX / ACTIVE HOSTLER CHECK','MISSOUT RESOLUTION / MISSING UNITS','VERIFY YARD CHECKS / DELETE OLD CHASSIS','SEND OUT NO-MATE AND MISMATCH LIST','YARD PATTERN CHECK / HOLDS / CROSS HAULS']},
 {time:'600-700 AM',tasks:['SEND AUDIT AND MONTHLY TRAINING LIST','LOAD OUT COUNT VS DERAMP COUNT ETA RELEASE','LIFT PER HOUR FLOOR NEEDED TO ACHIEVE GOAL','REVIEW DAILY EQUIPMENT DISPOSITION']},
 {time:'700-800 AM',tasks:['CHECK INBOUND STATUS','CONTACT SWITCH CREW / UPDATE PLANS','PLAN OUTBOUND / REVIEW LOAD PLAN / HOLDS','RESPOND TO EMAILS']},
@@ -2096,17 +2038,132 @@ const seedBlocks=[
 {time:'1300-2100 PM',tasks:['CHECK INBOUND STATUS / UPDATE TURNOVER','SEND NIGHTLY TURNOVER GOING INTO AM','EXPOSURE CONTROL PLAN UPDATE','REVIEW OUTBOUND SUMMARY FOR TOMORROW']}
 ];
 const defaultCalls=[
-{name:'Morning Ramp',start:'00:00',end:'08:15'},
-{name:'Jeremy',start:'07:30',end:'09:00'},
-{name:'Safety',start:'09:30',end:'10:00'},
-{name:'Afternoon Ramp',start:'15:30',end:'16:15'}
+{name:'Morning Operations Sync',start:'07:00',end:'07:30'},
+{name:'Customer Service Huddle',start:'08:00',end:'08:30'},
+{name:'Safety / Equipment Review',start:'09:00',end:'09:30'},
+{name:'Afternoon Turnover Call',start:'16:00',end:'16:30'}
 ];
-const assigneeNames=['Jacob','Dan','Mike','Jarvis','Neal','Jarvis','TM','NA','OTHER'];
-const keys={state:'sdt_state_v6',defaults:'sdt_defaults_v6',notes:'sdt_notes_v6',archives:'sdt_archives_v6',split:'sdt_split_v6',editing:'sdt_editing_v6',theme:'sdt_theme_v6',textScale:'sdt_text_scale_v6',calls:'sdt_calls_v6',confHidden:'sdt_conf_hidden_v6',urgentNotes:'sdt_urgent_notes_v8',fieldNotes:'sdt_field_notes_v1',afternoonNotes:'sdt_afternoon_notes_v1',urgentQuick:'sdt_urgent_quick_v7',statusLog:'sdt_task_status_log_v1'};
+const assigneeNames=['Alex','Jordan','Taylor','Morgan','Casey','Riley','Lead','NA','OTHER'];
+const keys={state:'demo_sdt_state_v1',defaults:'demo_sdt_defaults_v1',notes:'demo_sdt_notes_v1',archives:'demo_sdt_archives_v1',split:'demo_sdt_split_v1',editing:'demo_sdt_editing_v1',theme:'demo_sdt_theme_v1',textScale:'demo_sdt_text_scale_v1',calls:'demo_sdt_calls_v1',confHidden:'demo_sdt_conf_hidden_v1',urgentNotes:'demo_sdt_urgent_notes_v1',fieldNotes:'demo_sdt_field_notes_v1',afternoonNotes:'demo_sdt_afternoon_notes_v1',urgentQuick:'demo_sdt_urgent_quick_v1',statusLog:'demo_sdt_task_status_log_v1'};
 if(localStorage.getItem(keys.theme)===null){localStorage.setItem(keys.theme,'dark');}
 
+function ensureDemoSeedData(){
+  const demoSeedKey='demo_sdt_seeded_v2';
+
+  localStorage.setItem(keys.urgentNotes,JSON.stringify({
+    crises:['Example: Crane lane blocked - assign spotter','','','',''],
+    urgent:['Example: Customer ETA update needed before 0900','','','',''],
+    norush:['Example: Verify extra chassis request by end of day','','','',''],
+    endweek:['Example: Review weekly audit backlog','','','','']
+  }));
+
+  localStorage.setItem(keys.fieldNotes,JSON.stringify({
+    landing:['Inbound A to working track 1','Hold overflow for afternoon plan','','',''],
+    switchCrew:['Confirm switch window with yard','Protect outbound build track','','',''],
+    loading:['Prioritize hot loads first','Balance hostler coverage by zone','','',''],
+    other:['Demo notes are safe to edit or clear','','','','']
+  }));
+
+  localStorage.setItem(keys.afternoonNotes,JSON.stringify({
+    landing:['Recheck inbound placement after lunch','','','',''],
+    switchCrew:['Confirm evening switch plan','','','',''],
+    loading:['Review remaining load count vs goal','','','',''],
+    other:['Prepare turnover summary','','','','']
+  }));
+
+  const makeDemoState=(dayIndex)=>{
+    const assignees=['Alex','Jordan','Taylor','Morgan','Casey','Riley','Lead','NA','OTHER'];
+    return seedBlocks.map((block,bi)=>({
+      time:block.time,
+      tasks:block.tasks.map((text,ti)=>{
+        const pattern=(dayIndex+bi+ti)%7;
+        const done=pattern===0||pattern===3||pattern===5;
+        const reviewStatus=done?'pending':(pattern===1?'missed':pattern===2?'skipped':'pending');
+        return {
+          text,
+          status:done?'done':'pending',
+          stamp:done?`${6+((bi+dayIndex)%8)}:${String((ti*7+dayIndex*3)%60).padStart(2,'0')} ${((bi+dayIndex)%2?'PM':'AM')}`:reviewStatus.charAt(0).toUpperCase()+reviewStatus.slice(1),
+          reviewStatus,
+          assignee:done?assignees[(dayIndex+bi+ti)%assignees.length]:''
+        };
+      })
+    }));
+  };
+
+  const makeNotes=(dayIndex)=>{
+    const out={};
+    seedBlocks.forEach((block,bi)=>{
+      out[block.time]=[
+        {text:(bi+dayIndex)%3===0?'Demo note: follow up before turnover':'',highlight:(bi+dayIndex)%4===0},
+        {text:(bi+dayIndex)%5===0?'Demo note: check staffing coverage':'',highlight:false},
+        {text:'',highlight:false}
+      ];
+    });
+    return out;
+  };
+
+  const demoUrgent=(dayIndex)=>({
+    crises:[dayIndex%2?'Demo: equipment delay needs decision':'Demo: hot customer issue before cutoff','','','',''],
+    urgent:['Demo: unresolved task needs owner','','','',''],
+    norush:['Demo: monitor backlog trend','','','',''],
+    endweek:['Demo: review recurring missed items','','','','']
+  });
+
+  const demoMorning=(dayIndex)=>({
+    landing:[`Demo inbound plan day ${dayIndex}`,'Protect working track for priority loads','','',''],
+    switchCrew:['Confirm switch window','Review holds and track availability','','',''],
+    loading:['Push priority load plan','Balance hostlers by zone','','',''],
+    other:['Demo archive notes sample','','','','']
+  });
+
+  const demoAfternoon=(dayIndex)=>({
+    landing:['Recheck inbound placement after lunch','','','',''],
+    switchCrew:['Confirm evening switch plan','','','',''],
+    loading:['Review remaining load count vs goal','','','',''],
+    other:[`Prepare turnover summary day ${dayIndex}`,'','','','']
+  });
+
+  const demoArchives=Array.from({length:10},(_,i)=>{
+    const dayIndex=i+1;
+    const created=Date.now()-(10-i)*86400000;
+    const archiveState=makeDemoState(dayIndex);
+    const statusLog=archiveState.flatMap(block=>block.tasks
+      .filter(task=>task.status!=='done')
+      .map(task=>({
+        id:`demo-${dayIndex}-${block.time}-${task.text}`.replace(/\W+/g,'-'),
+        time:block.time,
+        text:task.text,
+        status:task.reviewStatus||'pending',
+        key:taskKey(block.time,task.text),
+        created,
+        date:new Date(created).toISOString().slice(0,10)
+      }))
+    );
+    return {
+      id:`demo_archive_${dayIndex}`,
+      name:`Demo Archive ${String(dayIndex).padStart(2,'0')} — ${new Date(created).toLocaleDateString()}`,
+      created,
+      state:archiveState,
+      notes:makeNotes(dayIndex),
+      calls:defaultCalls.map(c=>({...c})),
+      urgentNotes:demoUrgent(dayIndex),
+      fieldNotes:demoMorning(dayIndex),
+      afternoonNotes:demoAfternoon(dayIndex),
+      statusLog
+    };
+  });
 
 
+  localStorage.setItem(keys.defaults,JSON.stringify(seedBlocks));
+  localStorage.setItem(keys.state,JSON.stringify(makeDemoState(10)));
+  localStorage.setItem(keys.notes,JSON.stringify(makeNotes(10)));
+  localStorage.setItem(keys.calls,JSON.stringify(defaultCalls));
+
+  localStorage.setItem(keys.archives,JSON.stringify(demoArchives));
+  localStorage.setItem(keys.statusLog,JSON.stringify(demoArchives.flatMap(a=>a.statusLog||[])));
+  localStorage.setItem(demoSeedKey,'1');
+}
+ensureDemoSeedData();
 
 
 const clone=x=>JSON.parse(JSON.stringify(x));
@@ -2906,49 +2963,12 @@ document.getElementById('saveArchiveBtn').onclick=()=>{let all=getArchives();con
 document.getElementById('resetBtn').onclick=e=>confirming(e.target,()=>{state=defaultsToState(defaults);notes=defaultNotes(defaults);editing=null;render();},'Confirm Reset');
 setInterval(render,30000);render();
 
-
-function buildNotesExportClone(card){
-  const clone=card.cloneNode(true);
-  clone.classList.add('notes-export-clone');
-
-  // Remove helper/status/action text from the screenshot clone.
-  clone.querySelectorAll('.priority-board-sub,.priority-status,.priority-actions,.priority-legend').forEach(el=>el.remove());
-
-  const sourceInputs=[...card.querySelectorAll('input.priority-line-input, input.field-line-input, input.afternoon-line-input, textarea')];
-  const cloneInputs=[...clone.querySelectorAll('input.priority-line-input, input.field-line-input, input.afternoon-line-input, textarea')];
-
-  cloneInputs.forEach((input,i)=>{
-    const source=sourceInputs[i];
-    const computed=source?getComputedStyle(source):getComputedStyle(input);
-    const div=document.createElement('div');
-    div.className='priority-line-input-export';
-    div.textContent=source?.value || input.value || '';
-
-    // Copy the visual text style, but not native input baseline behavior.
-    div.style.color=computed.color;
-    div.style.fontFamily=computed.fontFamily;
-    div.style.fontSize=computed.fontSize;
-    div.style.fontWeight=computed.fontWeight;
-    div.style.letterSpacing=computed.letterSpacing;
-    div.style.textTransform=computed.textTransform;
-    div.style.background='transparent';
-    div.style.webkitTextFillColor=computed.color;
-    div.style.caretColor=computed.color;
-
-    input.replaceWith(div);
-  });
-
-  const rect=card.getBoundingClientRect();
-  clone.style.width=Math.ceil(rect.width)+'px';
-  return clone;
-}
-
-async function exportNotesPanelToClipboard(panelId,downloadName,successMessage,failMessage){
-  const panel=document.getElementById(panelId);
-  const card=panel?.querySelector('.urgent-panel-card') || panel?.querySelector('.modal-body');
+async function exportFieldNotesToClipboard(){
+  const panel = document.getElementById('fieldPanel');
+  const card = panel?.querySelector('.urgent-panel-card') || panel?.querySelector('.modal-body');
 
   if(!panel || !card){
-    showToast(failMessage || 'Notes board not found');
+    showToast('Morning Meeting board not found');
     return;
   }
 
@@ -2958,26 +2978,11 @@ async function exportNotesPanelToClipboard(panelId,downloadName,successMessage,f
       return;
     }
 
-    // Force-save the latest typed values before cloning.
-    if(panelId==='fieldPanel') saveFieldNoteText();
-    if(panelId==='afternoonPanel') saveAfternoonNoteText();
-
-    const clone=buildNotesExportClone(card);
-    document.body.appendChild(clone);
-
-    await new Promise(requestAnimationFrame);
-
-    const canvas=await html2canvas(clone,{
+    const canvas = await html2canvas(card,{
       backgroundColor: document.body.classList.contains('theme-dark') ? '#101820' : '#ffffff',
-      scale:2,
-      useCORS:true,
-      scrollX:0,
-      scrollY:0,
-      windowWidth:clone.scrollWidth,
-      windowHeight:clone.scrollHeight
+      scale: 2,
+      useCORS: true
     });
-
-    clone.remove();
 
     canvas.toBlob(async blob=>{
       if(!blob){
@@ -2986,13 +2991,13 @@ async function exportNotesPanelToClipboard(panelId,downloadName,successMessage,f
       }
 
       try{
-        await navigator.clipboard.write([new ClipboardItem({'image/png':blob})]);
-        showToast(successMessage);
+        await navigator.clipboard.write([new ClipboardItem({'image/png': blob})]);
+        showToast('Morning Meeting copied to clipboard');
       }catch(err){
-        const url=URL.createObjectURL(blob);
-        const a=document.createElement('a');
-        a.href=url;
-        a.download=downloadName;
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'field-notes.png';
         document.body.appendChild(a);
         a.click();
         a.remove();
@@ -3002,17 +3007,57 @@ async function exportNotesPanelToClipboard(panelId,downloadName,successMessage,f
     },'image/png');
   }catch(err){
     console.error(err);
-    document.querySelectorAll('.notes-export-clone').forEach(x=>x.remove());
-    showToast('Notes export failed');
+    showToast('Morning Meeting export failed');
   }
 }
 
-async function exportFieldNotesToClipboard(){
-  return exportNotesPanelToClipboard('fieldPanel','morning-meeting.png','Morning Meeting copied to clipboard','Morning Meeting board not found');
-}
 
 async function exportAfternoonNotesToClipboard(){
-  return exportNotesPanelToClipboard('afternoonPanel','afternoon-meeting.png','Afternoon Meeting copied to clipboard','Afternoon Meeting board not found');
+  const panel = document.getElementById('afternoonPanel');
+  const card = panel?.querySelector('.urgent-panel-card') || panel?.querySelector('.modal-body');
+
+  if(!panel || !card){
+    showToast('Afternoon Meeting board not found');
+    return;
+  }
+
+  try{
+    if(typeof html2canvas !== 'function'){
+      showToast('Screenshot tool still loading');
+      return;
+    }
+
+    const canvas = await html2canvas(card,{
+      backgroundColor: document.body.classList.contains('theme-dark') ? '#101820' : '#ffffff',
+      scale: 2,
+      useCORS: true
+    });
+
+    canvas.toBlob(async blob=>{
+      if(!blob){
+        showToast('Export failed');
+        return;
+      }
+
+      try{
+        await navigator.clipboard.write([new ClipboardItem({'image/png': blob})]);
+        showToast('Afternoon Meeting copied to clipboard');
+      }catch(err){
+        const url = URL.createObjectURL(blob);
+        const a = document.createElement('a');
+        a.href = url;
+        a.download = 'afternoon-meeting.png';
+        document.body.appendChild(a);
+        a.click();
+        a.remove();
+        setTimeout(()=>URL.revokeObjectURL(url),1500);
+        showToast('Clipboard blocked — image downloaded instead');
+      }
+    },'image/png');
+  }catch(err){
+    console.error(err);
+    showToast('Afternoon Meeting export failed');
+  }
 }
 
 document.addEventListener('click',e=>{
